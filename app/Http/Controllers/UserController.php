@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserRole;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -44,12 +46,16 @@ class UserController extends Controller
         ]);
         
         $user = new User();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->email_verified_at = now();
+            $user->password = $request->password;
         $user->save();
+
+        $user_role= new UserRole();
+            $user_role->user_id = $user->id;
+            $user_role->role_id = 2;
+        $user_role->save();
         
         auth()->login($user);
         
@@ -58,12 +64,20 @@ class UserController extends Controller
 
     public function userLogin(Request $request) {
 
-        if (auth()->attempt([$request->email, $request->password]) == false) {
+        $auth_validation = $request->only('email', 'password');
+
+        if (auth()->attempt($auth_validation) == false) {
             return back()->withErrors([
                 'message' => 'The email or password is incorrect, please try again'
             ]);
         }
         
+        return redirect()->route('index');
+    }
+
+    public function userLogout(Request $request) {
+        Auth::logout();
+
         return redirect()->route('index');
     }
 

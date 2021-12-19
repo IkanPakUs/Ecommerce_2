@@ -24,4 +24,6 @@ Route::name('user.')->group(function () {
     Route::get("/register", 'UserController@create')->name('register');
     Route::get("/login", 'UserController@index')->name('login');
     Route::post("/register", 'UserController@store')->name('store');
+    Route::post("/login", 'UserController@userLogin')->name('validate');
+    Route::delete("/user", 'UserController@userLogout')->name('logout');
 });

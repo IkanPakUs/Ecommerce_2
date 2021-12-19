@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>User Register</title>
+@extends('user/base')
 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}" type="text/css">
+@section('title','Sign Up')
 
-</head>
-<body>
-    <div class="limiter">
+@section('content')
+
+	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
                 <form method="POST" action="{{ route('user.store') }}" class="login100-form validate-form flex-sb flex-w float-left">
@@ -66,5 +59,6 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+	
+
+@endsection
