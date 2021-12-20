@@ -66,13 +66,13 @@ class UserController extends Controller
 
         $auth_validation = $request->only('email', 'password');
 
-        if (auth()->attempt($auth_validation) == false) {
-            return back()->withErrors([
-                'message' => 'The email or password is incorrect, please try again'
-            ]);
+        if (auth()->attempt($auth_validation)) {
+            return redirect()->route('index');
         }
+
+        $message = ['message' => 'The email or password is incorrect, please try again'];
+        return back()->withErrors($message);
         
-        return redirect()->route('index');
     }
 
     public function userLogout(Request $request) {

@@ -1,9 +1,8 @@
-@extends('user/base')
+@extends('layout/html')
 
 @section('title','Login')
 
-@section('content')
-
+@section('page_content')
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -16,14 +15,14 @@
 					<span class="txt1 p-b-11">
 						Email
 					</span>
-					<div class="wrap-input100 @error('email')validate-input validate-box-danger alert-validate @enderror m-b-36" data-validate= @error('email') "{{ $message }}"  @enderror >
+					<div class="wrap-input100 @error('message')validate-input validate-box-danger alert-validate @enderror m-b-36" data-validate= @error('message') "{{ $message }}"  @enderror >
 						<input class="input100" id="email" type="text" name="email" value="{{ old('email') }}"  autocomplete="none">
                         <span class="focus-input100"></span>
                     </div>
 					<span class="txt1 p-b-11">
 						Password
 					</span>
-					<div class="wrap-input100 m-b-12 @error('password') validate-box-danger validate-input alert-validate @enderror  m-b-36" data-validate= @error('password') "{{ $message }}"  @enderror>
+					<div class="wrap-input100 m-b-12 m-b-36">
 						<span class="btn-show-pass" >
 							<i class="fa fa-eye"></i>
 						</span>

@@ -1,8 +1,8 @@
-@extends('user/base')
+@extends('layout/base')
 
 @section('title','Sign Up')
 
-@section('content')
+@section('page_content')
 
 	<div class="limiter">
 		<div class="container-login100">

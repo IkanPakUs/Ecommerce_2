@@ -5,12 +5,11 @@
                 <div class="col-lg-5">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="img/logo_website_shayna_white.png" alt="" /></a>
+                            <a href="#">Sins Wear</a>
                         </div>
                         <ul>
-                            <li>Address: Setra Duta, Bandung</li>
-                            <li>Phone: +628 22081996</li>
-                            <li>Email: hello.shayna@gmail.com</li>
+                            <li>Phone: +628 9656720690</li>
+                            <li>Email: km.aryawirawan@gmail.com</li>
                         </ul>
                         <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
