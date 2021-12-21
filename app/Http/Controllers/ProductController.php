@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,9 +45,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = null)
+    public function show(Product $product_id)
     {
-        return view('catalog.product');
+        $product = $product_id;
+        $related = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->limit(4)->get();
+
+        return view('catalog.product',compact('product', 'related'));
     }
 
     /**

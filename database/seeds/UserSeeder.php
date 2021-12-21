@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        User::truncate();
         $user = new User();
             $user->name = "Komang Arya";
             $user->email = "komanggede86@gmail.com";

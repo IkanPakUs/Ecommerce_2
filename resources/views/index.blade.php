@@ -42,90 +42,28 @@
             <div class="row">
                 <div class="col-lg-12 mt-5">
                     <div class="product-slider owl-carousel">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/mickey1.jpg" alt="" />
-                                <ul>
-                                    <li class="w-icon active">
-                                        <a href="{{ route('product.view') }}"><i class="icon_bag_alt"></i></a>
-                                    </li>
-                                    <li class="quick-view"><a href="{{ route('product.view') }}">+ Quick View</a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Coat</div>
-                                <a href="{{ route('product.view') }}">
-                                    <h5>Mickey Baggy</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
+                        @foreach ($products as $product)    
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="{{ $product->mediaUrl()->first()->media_url }}" alt="" />
+                                    <ul>
+                                        <li class="w-icon active">
+                                            <a href="{{ route('product.view', ["product_id" => $product->id]) }}"><i class="icon_bag_alt"></i></a>
+                                        </li>
+                                        <li class="quick-view"><a href="{{ route('product.view', ["product_id" => $product->id]) }}">+ Quick View</a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">{{ $product->category->name }}</div>
+                                    <a href="{{ route('product.view', ["product_id" => $product->id]) }}">
+                                        <h5>{{ $product->name }}</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        Rp.{{ $product->price }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/products/women-2.jpg" alt="" />
-                                <ul>
-                                    <li class="w-icon active">
-                                        <a href="{{ route('product.view') }}"><i class="icon_bag_alt"></i></a>
-                                    </li>
-                                    <li class="quick-view"><a href="{{ route('product.view') }}">+ Quick View</a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Shoes</div>
-                                <a href="{{ route('product.view') }}">
-                                    <h5>Guangzhou sweater</h5>
-                                </a>
-                                <div class="product-price">
-                                    $13.00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/products/women-3.jpg" alt="" />
-                                <ul>
-                                    <li class="w-icon active">
-                                        <a href="{{ route('product.view') }}"><i class="icon_bag_alt"></i></a>
-                                    </li>
-                                    <li class="quick-view"><a href="{{ route('product.view') }}">+ Quick View</a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Towel</div>
-                                <a href="{{ route('product.view') }}">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $34.00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="img/products/women-4.jpg" alt="" />
-                                <ul>
-                                    <li class="w-icon active">
-                                        <a href="{{ route('product.view') }}"><i class="icon_bag_alt"></i></a>
-                                    </li>
-                                    <li class="quick-view"><a href="{{ route('product.view') }}">+ Quick View</a></li>
-                                    <li class="w-icon">
-                                        <a href="{{ route('product.view') }}"><i class="fa fa-random"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Towel</div>
-                                <a href="{{ route('product.view') }}">
-                                    <h5>Converse Shoes</h5>
-                                </a>
-                                <div class="product-price">
-                                    $34.00
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

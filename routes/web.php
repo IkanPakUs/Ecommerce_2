@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Home route
-Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', 'HomeController')->name('index');
 
 // For Product
-Route::get("/product", 'ProductController@show')->name('product.view');
+Route::get("/product/{product_id}", 'ProductController@show')->name('product.view');
 
 // For user
 Route::name('user.')->group(function () {
@@ -28,4 +28,8 @@ Route::name('user.')->group(function () {
     Route::post("/register", 'UserController@store')->name('store');
     Route::post("/login", 'UserController@userLogin')->name('validate');
     Route::delete("/user", 'UserController@userLogout')->name('logout');
+});
+
+Route::prefix('dashboard')->middleware('can:super-admin')->group(function () {
+    Route::get('/', 'DashboardController')->name('admin.dashboard');
 });
