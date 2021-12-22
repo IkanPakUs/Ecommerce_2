@@ -85,9 +85,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cart_id)
     {
         //
+        Cart::find($cart_id)->delete();
+
+        return redirect()->route('user.cart');
     }
 
     public function addCart(Request $request) {

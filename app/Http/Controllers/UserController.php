@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaction;
 use App\User;
 use App\UserRole;
 
@@ -124,5 +125,25 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cartView() {
+        $user = Auth::user();
+        $cart = $user->cart;
+        $transaction_code = $this->setTransactionCode();
+
+        return view('user.cart', compact('user', 'cart', 'transaction_code'));
+    }
+
+    public function setTransactionCode() {
+        $transaction_code = "#SW" . rand(1, 10000);
+        $transaction = Transaction::where('code', $transaction_code)->get();
+
+        if ($transaction->isNotEmpty()) {
+            $this->setTransactionCode();
+        } else {
+            return $transaction_code;
+        }
+
     }
 }

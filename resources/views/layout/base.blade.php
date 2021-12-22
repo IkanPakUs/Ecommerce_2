@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-2">
                             <div class="logo">
-                                <a href="./index.html">
+                                <a href="{{ route('index') }}">
                                     <h2>Sins Wear</h2>
                                 </a>
                             </div>
@@ -61,14 +61,13 @@
                                                     <h5>{{ Auth::user()->total_price }}</h5>
                                                 </div>
                                                 <div class="select-button">
-                                                    <a href="#" class="primary-btn view-card">VIEW CART</a>
-                                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                                    <a href="{{ route('user.cart') }}" class="primary-btn checkout-btn">CHECK OUT</a>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <form action="{{ route('user.logout') }}" method="post">
-                                            <input type="hidden" name="_method" value="DELETE">
                                             @csrf
                                                 <button type="submit" class="btn btn-outline-danger">Log Out</button>
                                             </form>

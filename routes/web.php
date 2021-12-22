@@ -21,7 +21,12 @@ Route::name('product.')->group(function () {
     Route::get("/product/{product_id}", 'ProductController@show')->name('view');
 
     Route::prefix('cart')->name('cart.')->group(function () {
-        Route::post('add', 'ProductController@addCart')->name('add');
+        Route::post('/add', 'ProductController@addCart')->name('add');
+        Route::delete('/delete/{cart_id}', 'ProductController@destroy')->name('delete');
+    });
+
+    Route::prefix('transaction')->name('transaction.')->group(function () {
+        Route::post('submited', 'TransactionController@submitted')->name('submitted');
     });
 });
 
@@ -33,7 +38,11 @@ Route::name('user.')->group(function () {
     });
     Route::post("/register", 'UserController@store')->name('store');
     Route::post("/login", 'UserController@userLogin')->name('validate');
-    Route::delete("/user", 'UserController@userLogout')->name('logout');
+    Route::post("/user", 'UserController@userLogout')->name('logout');
+
+    Route::prefix('user')->group(function () {
+        Route::get('/cart', 'UserController@cartView')->name('cart');
+    });
 });
 
 Route::prefix('dashboard')->middleware('can:super-admin')->group(function () {
