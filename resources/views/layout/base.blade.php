@@ -26,49 +26,42 @@
                                             <a href="#">
                                                 {{ Auth::user()->name }}
                                                 <i class="icon_bag_alt"></i>
-                                                <span>3</span>
+                                                <span>{{ Auth::user()->cart_count }}</span>
                                             </a>
                                             <div class="cart-hover">
                                                 <div class="select-items">
                                                     <table>
                                                         <tbody>
-                                                            <tr>
-                                                                <td class="si-pic">
-                                                                    <img src="img/select-product-1.jpg" alt="" />
-                                                                </td>
-                                                                <td class="si-text">
-                                                                    <div class="product-selected">
-                                                                        <p>$60.00 x 1</p>
-                                                                        <h6>Kabino Bedside Table</h6>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="si-close">
-                                                                    <i class="ti-close"></i>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="si-pic">
-                                                                    <img src="img/select-product-2.jpg" alt="" />
-                                                                </td>
-                                                                <td class="si-text">
-                                                                    <div class="product-selected">
-                                                                        <p>$60.00 x 1</p>
-                                                                        <h6>Kabino Bedside Table</h6>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="si-close">
-                                                                    <i class="ti-close"></i>
-                                                                </td>
-                                                            </tr>
+                                                            @if (Auth::user()->cart->isNotEmpty())
+                                                                @php
+                                                                    $carts = Auth::user()->cart;
+                                                                @endphp
+                                                                @foreach ($carts as $cart)
+                                                                    <tr>
+                                                                        <td class="si-pic">
+                                                                            <img src="{{ $cart->product->mediaUrl()->first()->memdia_url }}" alt="" />
+                                                                        </td>
+                                                                        <td class="si-text">
+                                                                            <div class="product-selected">
+                                                                                <p>{{ $cart->product->price }} x {{ $cart->quantity }} </p>
+                                                                                <h6>{{ $cart->product->name }}</h6>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="si-close">
+                                                                            <i class="ti-close"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endif
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="select-total">
                                                     <span>total:</span>
-                                                    <h5>$120.00</h5>
+                                                    <h5>{{ Auth::user()->total_price }}</h5>
                                                 </div>
                                                 <div class="select-button">
-                                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                                    <a href="#" class="primary-btn view-card">VIEW CART</a>
                                                     <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                                 </div>
                                             </div>

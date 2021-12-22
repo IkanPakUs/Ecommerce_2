@@ -52,7 +52,7 @@
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
-                            All rights reserved | Shayna
+                            All rights reserved | Sins Wear
                         </div>
                     </div>
                 </div>

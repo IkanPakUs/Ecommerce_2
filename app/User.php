@@ -45,4 +45,41 @@ class User extends Authenticatable
     public function role() {
         return $this->hasOne('App\UserRole');
     }
+
+    public function transaction() {
+        return $this->hasMany('App\Transaction');
+    }
+
+    public function cart() {
+        return $this->hasMany('App\Cart');
+    }
+
+    public function getCartCountAttribute() {
+        $cart = $this->cart;
+
+        if ($cart->isEmpty()) {
+            return 0;
+        }
+
+        $cart = $cart->reduce(function ($total, $item) {
+            return $total + $item->quantity;
+        });
+
+        return $cart;
+    }
+
+    public function getTotalPriceAttributte() {
+        $cart = $this->cart;
+
+        if ($cart->isEmpty()) {
+            return 0;
+        }
+
+        $price = $cart->reduce(function ($total, $item) {
+            $price = $item->product->price * $item->quantity;
+            return $total + $price;
+        });
+
+        return $price;
+    }
 }
