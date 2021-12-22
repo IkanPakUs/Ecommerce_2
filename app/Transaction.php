@@ -14,4 +14,8 @@ class Transaction extends Model
     public function user() {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    public function statusModel() {
+        return $this->belongsTo('App\TransactionStatus', 'status');
+    }
 }

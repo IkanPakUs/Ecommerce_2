@@ -54,7 +54,7 @@
                                     </ul>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="catagory-name">{{ $product->category->name }}</div>
+                                    <div class="catagory-name">{{ $product->category->category_name }}</div>
                                     <a href="{{ route('product.view', ["product_id" => $product->id]) }}">
                                         <h5>{{ $product->name }}</h5>
                                     </a>

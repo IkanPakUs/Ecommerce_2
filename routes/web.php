@@ -26,7 +26,7 @@ Route::name('product.')->group(function () {
     });
 
     Route::prefix('transaction')->name('transaction.')->group(function () {
-        Route::post('submited', 'TransactionController@submitted')->name('submitted');
+        Route::post('/submited', 'TransactionController@submitted')->name('submitted');
     });
 });
 
@@ -45,6 +45,15 @@ Route::name('user.')->group(function () {
     });
 });
 
-Route::prefix('dashboard')->middleware('can:super-admin')->group(function () {
-    Route::get('/', 'DashboardController')->name('admin.dashboard');
+Route::prefix('dashboard')->name('admin.')->middleware('can:super-admin')->group(function () {
+    Route::get('/', 'DashboardController')->name('dashboard');
+
+    Route::name('product.')->group(function () {
+        Route::get('/product-list', 'ProductController@index')->name('list');
+    });
+
+    Route::name('transaction.')->group(function () {
+        Route::get('/transaction-list', 'TransactionController@index')->name('list');
+        Route::post('/confirmed/{Transaction}', 'TransactionController@confirmed')->name('confirmed');
+    });
 });

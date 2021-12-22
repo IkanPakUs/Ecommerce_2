@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class TransactionController extends Controller
 {
     //
+    public function index(Request $request) {
+        $transactions = Transaction::all();
+
+        return view('admin.transaction.index', compact('transactions'));
+    }
+
     public function submitted(Request $request) {
         $user = Auth::user();
         $cart = $user->cart;
@@ -31,6 +37,13 @@ class TransactionController extends Controller
             return redirect()->route('user.cart');
         }
 
+    }
+
+    public function confirmed(Transaction $Transaction) {
+        $Transaction->status = 1;
+        $Transaction->save();
+
+        return redirect()->back();
     }
 
     public function storeData($user, $cart, $transaction_obj) {

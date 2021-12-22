@@ -1,5 +1,15 @@
 @extends('layout/html')
 
+@section('stylesheet')
+    <style>
+        .disabled {
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.7;
+        }
+    </style>   
+@endsection
+
 @section('page_content')
     <!-- Page Preloder -->
         <div id="preloder">
@@ -32,7 +42,7 @@
                                                 <div class="select-items">
                                                     <table>
                                                         <tbody>
-                                                            @if (Auth::user()->cart->isNotEmpty())
+                                                            @if (Auth::user()->cart_count > 0)
                                                                 @php
                                                                     $carts = Auth::user()->cart;
                                                                 @endphp
@@ -62,7 +72,7 @@
                                                 </div>
                                                 <div class="select-button">
                                                     <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                                    <a href="{{ route('user.cart') }}" class="primary-btn checkout-btn">CHECK OUT</a>
+                                                    <a href="{{ route('user.cart') }}" class="primary-btn checkout-btn {{ Auth::user()->cart_count > 0 ? '' : 'disabled' }}">CHECK OUT</a>
                                                 </div>
                                             </div>
                                         </li>

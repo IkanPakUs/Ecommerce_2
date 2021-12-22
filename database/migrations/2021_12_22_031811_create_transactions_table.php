@@ -15,8 +15,14 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->integer('code');
+            $table->string('code');
             $table->integer('user_id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->text('address');
+            $table->float('grandtotal');
+            $table->integer('status')->default(3);
             $table->timestamps();
         });
     }
