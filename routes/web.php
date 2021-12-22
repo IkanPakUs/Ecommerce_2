@@ -27,6 +27,7 @@ Route::name('product.')->group(function () {
 
     Route::prefix('transaction')->name('transaction.')->group(function () {
         Route::post('/submited', 'TransactionController@submitted')->name('submitted');
+        Route::get('/finish', 'TransactionController@finished')->name('finished');
     });
 });
 

@@ -31,7 +31,10 @@ class TransactionController extends Controller
 
         try {
             $this->storeData($user, $cart, $transaction_obj);
-            return redirect()->route('index');
+            
+            $cart_id = $cart->pluck('id');
+            Cart::destroy($cart_id);
+            return redirect()->route('product.transaction.finished');
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('user.cart');
@@ -46,11 +49,13 @@ class TransactionController extends Controller
         return redirect()->back();
     }
 
+    public function finished() {
+        return view('user.success');
+    }
+
     public function storeData($user, $cart, $transaction_obj) {
 
         try {
-            $cart_id = $cart->pluck('id');
-
             $transaction = new Transaction();
                 $transaction->code = $transaction_obj->code;
                 $transaction->user_id = $user->id;
@@ -71,7 +76,6 @@ class TransactionController extends Controller
             })->toArray();
     
             $transaction->details()->createMany($cart);
-            Cart::destroy($cart_id);
 
         } catch (\Throwable $e) {
             throw $e;
