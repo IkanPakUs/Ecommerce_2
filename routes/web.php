@@ -17,7 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController')->name('index');
 
 // For Product
-Route::get("/product/{product_id}", 'ProductController@show')->name('product.view');
+Route::name('product.')->group(function () {
+    Route::get("/product/{product_id}", 'ProductController@show')->name('view');
+
+    Route::prefix('cart')->name('cart.')->group(function () {
+        Route::post('add', 'ProductController@addCart')->name('add');
+    });
+});
 
 // For user
 Route::name('user.')->group(function () {

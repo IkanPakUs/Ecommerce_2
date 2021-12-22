@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Product;
+
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -85,5 +88,30 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addCart(Request $request) {
+        $product = Product::find($request->product);
+        $user = Auth::user();
+
+        try {
+            $cart = Cart::updateOrCreate(
+                ["user_id" => $user->id, "product_id" => $product->id],
+                ["user_id" => $user->id, "product_id" => $product->id]
+            );
+
+            $quantity = $cart->quantity + ($request->quantity ?? 1);
+            $cart->quantity = $quantity;
+            $cart->save();
+            
+            $status = "Product successfully added to your cart.";
+            return redirect()->back()->with('success', $status);
+        } catch (\Exception $e) {
+            \Log::info($e->getMessage());
+
+            $status = "Product cant added to cart, please try again later.";
+            return redirect()->back()->with('failed', $status);
+        }
+
     }
 }

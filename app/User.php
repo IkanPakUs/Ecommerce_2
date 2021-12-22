@@ -68,7 +68,7 @@ class User extends Authenticatable
         return $cart;
     }
 
-    public function getTotalPriceAttributte() {
+    public function getTotalPriceAttribute() {
         $cart = $this->cart;
 
         if ($cart->isEmpty()) {

@@ -39,7 +39,7 @@
                                                                 @foreach ($carts as $cart)
                                                                     <tr>
                                                                         <td class="si-pic">
-                                                                            <img src="{{ $cart->product->mediaUrl()->first()->memdia_url }}" alt="" />
+                                                                            <img src="{{ $cart->product->mediaUrl()->first()->media_url }}" alt="" />
                                                                         </td>
                                                                         <td class="si-text">
                                                                             <div class="product-selected">

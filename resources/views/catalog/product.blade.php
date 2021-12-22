@@ -20,6 +20,22 @@
 @section('content')
     
     <!-- Product Shop Section Begin -->
+    @if (session('success') || session('failed'))
+        <div class="d-flex justify-content-center">
+            @if (session('failed'))
+            <div class="alert alert-danger alert-dismissible fade show position-absolute" style="top: 20px" role="alert">
+                {{ session('failed') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @elseif(session('success'))
+                <div class="alert alert-success alert-dismissible fade show position-absolute" style="top: 20px" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+        </div>
+    @endif
+     
     <section class="product-shop spad page-details">
         <div class="container">
             <div class="row">
@@ -52,7 +68,11 @@
                                     <h4>Rp.{{ $product->price }}</h4>
                                 </div>
                                 <div class="quantity">
-                                    <a href="shopping-cart.html" class="primary-btn pd-cart">Add To Cart</a>
+                                    <form action="{{ route('product.cart.add') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="product" value="{{ $product->id }}">
+                                        <button type="submit" class="primary-btn pd-cart">Add To Cart</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
