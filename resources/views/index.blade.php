@@ -8,8 +8,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>Bag,kids</span>
-                            <h1>Black friday</h1>
+                            <span>Girl</span>
+                            <h1>Feminime</h1>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                             </p>
@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
-                            <h1>Black friday</h1>
+                            <h1>Back To School</h1>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                             </p>
@@ -76,37 +76,37 @@
         <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="#">shayna_gallery</a></h5>
+                <h5><a href="#">Sins Wear</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" data-setbg="img/insta-2.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="#">shayna_gallery</a></h5>
+                <h5><a href="#">Sins Wear</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" data-setbg="img/insta-3.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="#">shayna_gallery</a></h5>
+                <h5><a href="#">Sins Wear</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" data-setbg="img/insta-4.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="#">shayna_gallery</a></h5>
+                <h5><a href="#">Sins Wear</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" data-setbg="img/insta-5.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="#">shayna_gallery</a></h5>
+                <h5><a href="#">Sins Wear</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" data-setbg="img/insta-6.jpg">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="#">shayna_gallery</a></h5>
+                <h5><a href="#">Sins Wear</a></h5>
             </div>
         </div>
     </div>

@@ -5,18 +5,12 @@
                 <div class="col-lg-5">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#">Sins Wear</a>
+                            <a href="{{ route('index') }}" class="fs-3 fw-bold text-decoration-none" style="color: #fff">Sins Wear</a>
                         </div>
                         <ul>
                             <li>Phone: +628 9656720690</li>
                             <li>Email: km.aryawirawan@gmail.com</li>
                         </ul>
-                        <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1">
@@ -24,7 +18,7 @@
                         <h5>Information</h5>
                         <ul>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Checkout</a></li>
+                            <li><a href="{{ route('user.cart') }}">Checkout</a></li>
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">Serivius</a></li>
                         </ul>
@@ -36,8 +30,8 @@
                         <ul>
                             <li><a href="#">My Account</a></li>
                             <li><a href="#">Contact</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li><a href="{{ route('user.cart') }}">Shopping Cart</a></li>
+                            <li><a href="{{ route('index') }}">Shop</a></li>
                         </ul>
                     </div>
                 </div>

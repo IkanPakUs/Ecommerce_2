@@ -71,7 +71,7 @@
                                                     <h5>{{ Auth::user()->total_price }}</h5>
                                                 </div>
                                                 <div class="select-button">
-                                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                                    {{-- <a href="#" class="primary-btn view-card">VIEW CARD</a> --}}
                                                     <a href="{{ route('user.cart') }}" class="primary-btn checkout-btn {{ Auth::user()->cart_count > 0 ? '' : 'disabled' }}">CHECK OUT</a>
                                                 </div>
                                             </div>
